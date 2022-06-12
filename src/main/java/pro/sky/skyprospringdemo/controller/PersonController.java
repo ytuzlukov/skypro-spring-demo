@@ -15,11 +15,16 @@ public class PersonController {
         this.personService = personService;
     }
 
-    @GetMapping(path = "/person")
-    public String getPersonInfo(@RequestParam("number") Integer number) {
-        final String person;
-        person = personService.getPerson(number);
-        return person;
+    @GetMapping(path = "/person/by_passport")
+    public String getPersonInfo(@RequestParam("passport") String passport) {
+        return personService.getPersonByPassport(passport);
+    }
+
+    @GetMapping(path = "/person/profession/add")
+    public String addProfession(@RequestParam("passport") String passport,
+                                @RequestParam("profession") Integer profession) {
+        personService.addProfession(passport, profession);
+        return "профессия добавлена";
     }
 
     @GetMapping(path = "/person/add")
