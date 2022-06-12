@@ -1,6 +1,7 @@
 package pro.sky.skyprospringdemo.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pro.sky.skyprospringdemo.domain.Employee;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping("/employee")
 public class EmployeeController {
     private final EmployeeService employeeService;
 
@@ -17,7 +19,7 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-    @GetMapping(path = "/employee/add")
+    @GetMapping(path = "/add")
     public Employee addEmployee(
             @RequestParam("firstName") String firstName,
             @RequestParam("secondName") String secondName) {
@@ -28,7 +30,7 @@ public class EmployeeController {
         return employee;
     }
 
-    @GetMapping(path = "/employee/remove")
+    @GetMapping(path = "/remove")
     public Employee removeEmployee(
             @RequestParam("firstName") String firstName,
             @RequestParam("secondName") String secondName) {
@@ -39,7 +41,7 @@ public class EmployeeController {
         return employee;
     }
 
-    @GetMapping(path = "/employee/find")
+    @GetMapping(path = "/find")
     public Employee findEmployee(
             @RequestParam("firstName") String firstName,
             @RequestParam("secondName") String secondName) {
@@ -50,7 +52,7 @@ public class EmployeeController {
         return employee;
     }
 
-    @GetMapping(path = "/employee/get_employees_list")
+    @GetMapping(path = "/get_employees_list")
     public List<Employee> getEmployeesList() {
         return new ArrayList<>(employeeService.getEmployeesList());
     }
