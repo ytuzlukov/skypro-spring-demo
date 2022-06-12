@@ -38,17 +38,11 @@ public class CollectionsHomework {
 
         System.out.println("Задание 4");
 
-        List<String> professions = List.of(
-                "безработный",
-                "водитель",
-                "плотник",
-                "столяр",
-                "актер",
-                "актер",
-                "безработный"
-        );
+        String text = "безработный водитель плотник столяр актер актер безработный";
 
-        List<String> professionsEmpty = new ArrayList<>(List.of("0"
+        List<String> professions = List.of(text.split(" "));
+
+        List<String> professionsEmpty = new ArrayList<>(List.of(""
         ));
 
         int iter = 0;
