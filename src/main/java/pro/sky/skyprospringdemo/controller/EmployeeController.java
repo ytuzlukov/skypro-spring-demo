@@ -7,9 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 import pro.sky.skyprospringdemo.domain.Employee;
 import pro.sky.skyprospringdemo.service.EmployeeService;
 
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/employee")
@@ -54,7 +53,7 @@ public class EmployeeController {
     }
 
     @GetMapping(path = "/get_employees")
-    public Map<String, Employee> getEmployeesMap() {
-        return employeeService.getEmployeesMap();
+    public Collection<Employee> getEmployeesMap() {
+        return employeeService.getEmployees();
     }
 }
