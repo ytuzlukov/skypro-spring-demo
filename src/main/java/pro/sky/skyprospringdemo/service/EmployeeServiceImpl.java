@@ -5,13 +5,13 @@ import pro.sky.skyprospringdemo.domain.Employee;
 import pro.sky.skyprospringdemo.exceptions.EmployeeAlreadyAddedException;
 import pro.sky.skyprospringdemo.exceptions.EmployeeNotFoundException;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
-    List<Employee> employees = new ArrayList<>(List.of(
+    Map<String, Employee> employees = new HashMap(Map.of(
             new Employee(
                     "Жан",
                     "Рено"
@@ -23,29 +23,29 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee addEmployee(Employee employee) {
-        if (!employees.contains(employee)) {
-            employees.add(employee);
+        if (!employees.containsKey(employee.getFullName())) {
+            employees.put(employee.getFullName(), employee);
             return employee;
         } else throw new EmployeeAlreadyAddedException("Такой пользователь уже существует");
     }
 
     @Override
     public Employee removeEmployee(Employee employee) {
-        if (employees.contains(employee)) {
-            employees.remove(employee);
+        if (employees.containsKey(employee.getFullName())) {
+            employees.remove(employee.getFullName());
         } else throw new EmployeeNotFoundException("Пользователь с таким именем и фамилией не найден");
         return employee;
     }
 
     @Override
     public Employee findEmployee(Employee employee) {
-        if (employees.contains(employee)) {
+        if (employees.containsKey(employee.getFullName())) {
             return employee;
         } else throw new EmployeeNotFoundException("Пользователь с таким именем и фамилией не найден");
     }
 
     @Override
-    public List<Employee> getEmployeesList() {
+    public Map<String, Employee> getEmployeesMap() {
             return employees;
     }
 

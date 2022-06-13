@@ -9,6 +9,7 @@ import pro.sky.skyprospringdemo.service.EmployeeService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/employee")
@@ -52,8 +53,8 @@ public class EmployeeController {
         return employee;
     }
 
-    @GetMapping(path = "/get_employees_list")
-    public List<Employee> getEmployeesList() {
-        return new ArrayList<>(employeeService.getEmployeesList());
+    @GetMapping(path = "/get_employees")
+    public Map<String, Employee> getEmployeesMap() {
+        return employeeService.getEmployeesMap();
     }
 }

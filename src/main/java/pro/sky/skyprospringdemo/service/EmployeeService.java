@@ -3,6 +3,7 @@ package pro.sky.skyprospringdemo.service;
 import pro.sky.skyprospringdemo.domain.Employee;
 
 import java.util.List;
+import java.util.Map;
 
 public interface EmployeeService {
     Employee addEmployee(Employee employee);
@@ -11,5 +12,5 @@ public interface EmployeeService {
 
     Employee findEmployee(Employee employee);
 
-    List<Employee> getEmployeesList();
+    Map<String, Employee> getEmployeesMap();
 }
