@@ -10,7 +10,7 @@ import java.util.*;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
-    Map<String, Employee> employees = new HashMap(Map.of());
+    private final Map<String, Employee> employees = new HashMap(Map.of());
 
     @Override
     public Employee addEmployee(Employee employee) {
@@ -26,14 +26,18 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee removeEmployee(Employee employee) {
         if (employees.containsKey(employee.getFullName())) {
             return employees.remove(employee.getFullName());
-        } else throw new EmployeeNotFoundException("Пользователь с таким именем и фамилией не найден");
+        } else {
+            throw new EmployeeNotFoundException("Пользователь с таким именем и фамилией не найден");
+        }
     }
 
     @Override
     public Employee findEmployee(Employee employee) {
         if (employees.containsKey(employee.getFullName())) {
             return employee;
-        } else throw new EmployeeNotFoundException("Пользователь с таким именем и фамилией не найден");
+        } else {
+            throw new EmployeeNotFoundException("Пользователь с таким именем и фамилией не найден");
+        }
     }
 
     @Override
