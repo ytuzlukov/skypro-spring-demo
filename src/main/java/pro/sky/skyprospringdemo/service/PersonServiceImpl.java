@@ -6,6 +6,7 @@ import pro.sky.skyprospringdemo.domain.Person;
 import pro.sky.skyprospringdemo.domain.TruckDriver;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class PersonServiceImpl implements PersonService {
@@ -37,7 +38,7 @@ public class PersonServiceImpl implements PersonService {
                     "Стетхем",
                     "12315",
                     "1235",
-                    2
+                    0
             ),
             "12344",
             new TruckDriver(
@@ -45,7 +46,7 @@ public class PersonServiceImpl implements PersonService {
                     "Патрик",
                     "12344",
                     "2353",
-                    2)
+                    0)
 
     ));
     List<String> professions = List.of(
@@ -72,7 +73,10 @@ public class PersonServiceImpl implements PersonService {
                 result.add(person);
             }
         }
-        return result;
+
+        return persons.values().stream()
+                .filter(e -> e.getProfessionNumbers().contains(professionNumber))
+                .collect(Collectors.toList());
     }
 
     @Override
