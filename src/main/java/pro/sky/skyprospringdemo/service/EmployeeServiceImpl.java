@@ -6,11 +6,23 @@ import pro.sky.skyprospringdemo.exceptions.EmployeeAlreadyAddedException;
 import pro.sky.skyprospringdemo.exceptions.EmployeeNotFoundException;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
-    private final Map<String, Employee> employees = new HashMap(Map.of());
+    Map<String, Employee> employees = new HashMap<>(Map.of(
+            "Ivanov Ivan Ivanovich", new Employee("Ivanov", "Ivan",53_000, "1"),
+            "Petrov Petr Petrovich", new Employee("Petrov", "Petr", 61_000, "1"),
+            "Stepanov Stepan Stepanovich", new Employee("Stepanov", "Stepan", 75_000, "2"),
+            "Sergeev Sergei Sergeevich", new Employee("Sergeev", "Sergei", 35_000, "2"),
+            "Romanov Roman Romanovich", new Employee("Romanov", "Roman", 43_000, "3"),
+            "Vasiliev Vasiliy Vasilievich", new Employee("Vasiliev","Vasiliy", 66_000, "3"),
+            "Alexandrov Alexander Alexandrovich", new Employee("Alexandrov","Alexander", 18_000, "4"),
+            "Mikhaylov Mikhail Mikhailovich", new Employee("Mikhaylov","Mikhail", 68_000, "4"),
+            "Dmitriev Dmitrii Dmitrievich", new Employee("Dmitriev","Dmitrii", 28_000, "5"),
+            "Vladimirov Vladimir Vladimirovich", new Employee("Vladimirov","Vladimir", 33_000, "5")
+    ));
 
     @Override
     public Employee addEmployee(Employee employee) {
@@ -41,8 +53,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Collection<Employee> getEmployees() {
-            return employees.values();
+    public Map<String, Employee> getEmployees() {
+        return employees;
     }
-
 }
