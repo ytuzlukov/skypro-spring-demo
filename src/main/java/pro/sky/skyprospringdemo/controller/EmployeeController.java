@@ -8,6 +8,7 @@ import pro.sky.skyprospringdemo.domain.Employee;
 import pro.sky.skyprospringdemo.service.EmployeeService;
 
 import java.util.Collection;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/employee")
@@ -21,10 +22,14 @@ public class EmployeeController {
     @GetMapping(path = "/add")
     public Employee addEmployee(
             @RequestParam("firstName") String firstName,
-            @RequestParam("secondName") String secondName) {
+            @RequestParam("secondName") String secondName,
+            @RequestParam("salary") int salary,
+            @RequestParam("department") String department) {
         Employee employee = new Employee(
                 firstName,
-                secondName);
+                secondName,
+                salary,
+                department);
         employeeService.addEmployee(employee);
         return employee;
     }
@@ -32,10 +37,14 @@ public class EmployeeController {
     @GetMapping(path = "/remove")
     public Employee removeEmployee(
             @RequestParam("firstName") String firstName,
-            @RequestParam("secondName") String secondName) {
+            @RequestParam("secondName") String secondName,
+            @RequestParam("salary") int salary,
+            @RequestParam("department") String department) {
         Employee employee = new Employee(
                 firstName,
-                secondName);
+                secondName,
+                salary,
+                department);
         employeeService.removeEmployee(employee);
         return employee;
     }
@@ -43,16 +52,20 @@ public class EmployeeController {
     @GetMapping(path = "/find")
     public Employee findEmployee(
             @RequestParam("firstName") String firstName,
-            @RequestParam("secondName") String secondName) {
+            @RequestParam("secondName") String secondName,
+            @RequestParam("salary") int salary,
+            @RequestParam("department") String department) {
         Employee employee = new Employee(
                 firstName,
-                secondName);
+                secondName,
+                salary,
+                department);
         employeeService.findEmployee(employee);
         return employee;
     }
 
     @GetMapping(path = "/getEmployees")
-    public Collection<Employee> getEmployeesMap() {
+    public Map<String, Employee> getEmployeesMap() {
         return employeeService.getEmployees();
     }
 }
