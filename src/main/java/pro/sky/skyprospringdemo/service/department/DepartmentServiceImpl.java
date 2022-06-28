@@ -1,7 +1,9 @@
-package pro.sky.skyprospringdemo.service;
+package pro.sky.skyprospringdemo.service.department;
 
 import org.springframework.stereotype.Service;
 import pro.sky.skyprospringdemo.domain.Employee;
+import pro.sky.skyprospringdemo.service.employee.EmployeeService;
+import pro.sky.skyprospringdemo.service.employee.EmployeeServiceImpl;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -13,32 +15,32 @@ public class DepartmentServiceImpl implements DepartmentService{
 
     @Override
     public int getMaxSalaryFromDepartment(String departmentId) {
-        Map<String, Employee> mp = employeeService.getEmployees();
-        return mp.values().stream()
+        List<Employee> mp = employeeService.getEmployees();
+        return mp.stream()
                 .filter(e -> Objects.equals(e.getDepartment(), departmentId))
                 .max(Comparator.comparingInt(c -> c.getSalary())).get().getSalary();
     }
 
     @Override
     public int getMinSalaryFromDepartment(String departmentId) {
-        Map<String, Employee> mp = employeeService.getEmployees();
-        return mp.values().stream()
+        List<Employee> mp = employeeService.getEmployees();
+        return mp.stream()
                 .filter(e -> Objects.equals(e.getDepartment(), departmentId))
                 .min(Comparator.comparingInt(c -> c.getSalary())).get().getSalary();
     }
 
     @Override
     public List<Employee> getAllEmployeesFromDepartment(String departmentId) {
-        Map<String, Employee> mp = employeeService.getEmployees();
+        List<Employee> mp = employeeService.getEmployees();
         return mp
-                .values().stream()
+                .stream()
                 .filter(e -> Objects.equals(e.getDepartment(), departmentId))
                 .collect(Collectors.toList());
     }
 
     @Override
     public List<Employee> getAllEmployees() {
-        Map<String, Employee> mp = employeeService.getEmployees();
-        return new ArrayList<>(mp.values());
+        List<Employee> mp = employeeService.getEmployees();
+        return new ArrayList<>(mp);
     }
 }

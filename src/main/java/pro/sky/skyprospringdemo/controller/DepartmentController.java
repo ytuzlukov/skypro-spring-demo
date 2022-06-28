@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pro.sky.skyprospringdemo.domain.Employee;
-import pro.sky.skyprospringdemo.service.DepartmentService;
-import pro.sky.skyprospringdemo.service.EmployeeService;
+import pro.sky.skyprospringdemo.service.department.DepartmentService;
+import pro.sky.skyprospringdemo.service.employee.EmployeeService;
 
 import java.util.List;
 

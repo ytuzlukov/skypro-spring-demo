@@ -4,12 +4,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pro.sky.skyprospringdemo.domain.Person;
-import pro.sky.skyprospringdemo.service.PersonService;
+import pro.sky.skyprospringdemo.service.person.PersonService;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @RestController
 public class PersonController {

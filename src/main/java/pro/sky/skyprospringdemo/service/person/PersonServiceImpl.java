@@ -1,4 +1,4 @@
-package pro.sky.skyprospringdemo.service;
+package pro.sky.skyprospringdemo.service.person;
 
 import org.springframework.stereotype.Service;
 import pro.sky.skyprospringdemo.domain.Driver;

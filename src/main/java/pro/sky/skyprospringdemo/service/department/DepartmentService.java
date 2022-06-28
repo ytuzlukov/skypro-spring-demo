@@ -1,4 +1,4 @@
-package pro.sky.skyprospringdemo.service;
+package pro.sky.skyprospringdemo.service.department;
 
 import pro.sky.skyprospringdemo.domain.Employee;
 
