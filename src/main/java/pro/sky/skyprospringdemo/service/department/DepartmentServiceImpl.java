@@ -3,15 +3,18 @@ package pro.sky.skyprospringdemo.service.department;
 import org.springframework.stereotype.Service;
 import pro.sky.skyprospringdemo.domain.Employee;
 import pro.sky.skyprospringdemo.service.employee.EmployeeService;
-import pro.sky.skyprospringdemo.service.employee.EmployeeServiceImpl;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-public class DepartmentServiceImpl implements DepartmentService{
+public class DepartmentServiceImpl implements DepartmentService {
 
-    EmployeeService employeeService = new EmployeeServiceImpl();
+    private final EmployeeService employeeService;
+
+    public DepartmentServiceImpl(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
 
     @Override
     public int getMaxSalaryFromDepartment(String departmentId) {
