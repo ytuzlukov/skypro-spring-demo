@@ -1,5 +1,6 @@
 package pro.sky.skyprospringdemo.controller;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -59,7 +60,7 @@ public class PersonController {
 
         final Optional<String> passport = personsByProfession.stream()
                 .map(e -> e.getPassport())
-                .filter(p -> p.startsWith("5"))
+                .filter(p -> p.startsWith(String.valueOf(profession)))
                 .map(p -> "~" + p + "~")
                 .findAny()
                 ;
