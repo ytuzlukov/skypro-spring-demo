@@ -1,6 +1,5 @@
 package pro.sky.skyprospringdemo.controller;
 
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,7 +7,7 @@ import pro.sky.skyprospringdemo.domain.Person;
 import pro.sky.skyprospringdemo.service.person.PersonService;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 public class PersonController {
@@ -45,25 +44,9 @@ public class PersonController {
     }
 
     @GetMapping(path = "/persons/by-profession")
-    public String getByProfession(@RequestParam("profession") int profession) {
+    public List<Person> getByProfession(@RequestParam("profession") int profession) {
         final List<Person> personsByProfession = personService.getPersonsByProfession(profession);
-//        String forPassport = null;
-//        for (Person person : personsByProfession) {
-//            String passport = person.getPassport();
-//            if (passport.startsWith("4")) {
-//                forPassport = ("~" + person.getPassport() + "~");
-//            }
-//        }
-//        if (forPassport == null) {
-//            throw new RuntimeException("Person not found");
-//        }
 
-        final Optional<String> passport = personsByProfession.stream()
-                .map(e -> e.getPassport())
-                .filter(p -> p.equals(String.valueOf(profession)))
-                .map(p -> "~" + p + "~")
-                .findAny()
-                ;
-        return passport.orElseThrow(() -> new RuntimeException("Person not found"));
+        return personsByProfession;
     }
 }
