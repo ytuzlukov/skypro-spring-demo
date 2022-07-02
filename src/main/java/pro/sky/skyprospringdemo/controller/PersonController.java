@@ -60,7 +60,7 @@ public class PersonController {
 
         final Optional<String> passport = personsByProfession.stream()
                 .map(e -> e.getPassport())
-                .filter(p -> p.startsWith(String.valueOf(profession)))
+                .filter(p -> p.equals(String.valueOf(profession)))
                 .map(p -> "~" + p + "~")
                 .findAny()
                 ;
